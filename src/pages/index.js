@@ -1,0 +1,7 @@
+export { Favourites } from './favourites/Favourites'
+export { Home } from './home/Home'
+export { SignIn } from './signin/SignIn'
+export { NotFound } from './notFound/NotFound'
+export { SignUp } from './signup/SignUp'
+export { Searching } from './searching/Searching'
+export { History } from './history/History'
