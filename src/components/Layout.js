@@ -1,6 +1,10 @@
 import { NavLink, Outlet} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { signout } from '../store/userReducer'
 
 export const Layout = () => {
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user.user)
 
     return (
         <>
@@ -23,15 +27,15 @@ export const Layout = () => {
                     <li>
                     <NavLink to='/searching'>Searching</NavLink>
                     </li>
-                  <li>
+                   {!user && <li>
                     <NavLink to='/signin'>SignIn</NavLink>
-                    </li>
-                 <li>
+                    </li>}
+                   {!user && <li>
                     <NavLink to='/signup'>SignUp</NavLink>
-                    </li>
-                    <li>
-                    <button>LogOut</button>
-                    </li>
+                    </li>}
+                    {user && <li>
+                    <button onClick={() => dispatch(signout())}>LogOut</button>
+                    </li>}
                 </ul>
             
             </nav>
