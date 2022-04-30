@@ -4,6 +4,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     user: null,
+    input: '',
+    option: ''
   }
   
   
@@ -31,6 +33,11 @@ const initialState = {
         state.user=null
         localStorage.isActive = ''
       },
+      setFetch(state,action) {
+          const { input, option } = action.payload
+          state.input = input
+          state.option = option
+      }
     },
   })
   
