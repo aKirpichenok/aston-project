@@ -26,7 +26,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if(!!localStorage.isActive) return navigate('/', {replace:true})
-    },[])
+    },[navigate])
 
     return (
         <div>
