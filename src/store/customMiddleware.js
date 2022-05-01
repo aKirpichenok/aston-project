@@ -57,6 +57,12 @@ export const customMiddleware = store => next => action => {
                   const users = JSON.parse(localStorage.users)
                   if(users[user]) {
                       alert('Email is already exist!')
+                      return next({
+                        type: 'user/signup',
+                        payload: {
+                        isError: true
+                        }
+                      })
                   }else {
                   const user1 = {[user] : {
                     password,

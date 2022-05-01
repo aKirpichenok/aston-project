@@ -25,9 +25,11 @@ const initialState = {
 
       },
       signup(state,action) {
-        const {user} = action.payload
-        state.user=user
-        localStorage.isActive = user
+        const {user, isError} = action.payload
+        if(!isError){
+            state.user=user
+            localStorage.isActive = user 
+        }
       },
       signout(state) {
         state.user=null

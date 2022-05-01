@@ -16,7 +16,8 @@ const SignUp = () => {
         const password = form.password.value
         if(validation(user,'login') && validation(password,'password')){
             dispatch(signup({user,password}))
-            navigate('/', {replace:true})
+            localStorage.isActive !== '' ? navigate('/', {replace:true}) : alert('try another variant')
+            
         }else{
             alert('Something is invalid')
         }
