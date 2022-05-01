@@ -18,7 +18,7 @@ const SignIn = () => {
         const password = form.password.value
         if(validation(user,'login') && validation(password,'password')){
         dispatch(signin({user,password}))
-        localStorage.isActive !== '' && navigate(fromPage, {replace:true})
+        navigate(fromPage, {replace:true})
     }else{
         alert('Something is invalid')
     }
@@ -26,7 +26,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if(!!localStorage.isActive) return navigate('/', {replace:true})
-    },[])
+    })
 
     return (
         <div>

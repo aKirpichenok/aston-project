@@ -5,7 +5,7 @@ export const customMiddleware = store => next => action => {
             const {user,password}=action.payload
             if(localStorage.users){
                 const users = JSON.parse(localStorage.users)
-                if(users[user] && password === users[user].password){
+                if(users[user] && password == users[user].password){
                     return next(action)
             }else {
                 let result = next({
@@ -57,6 +57,12 @@ export const customMiddleware = store => next => action => {
                   const users = JSON.parse(localStorage.users)
                   if(users[user]) {
                       alert('Email is already exist!')
+                      return next({
+                        type: 'user/signup',
+                        payload: {
+                        isError: true
+                        }
+                      })
                   }else {
                   const user1 = {[user] : {
                     password,
@@ -83,6 +89,26 @@ export const customMiddleware = store => next => action => {
         case 'user/signout': {
         return next(action)
         }
+        case 'setFetch': {
+            if(localStorage.isActive === ''){
+                return next(action)
+            }else {
+                const { input, option } = action.payload
+                const user = localStorage.isActive
+                const  users = JSON.parse(localStorage.users)
+                const str = users[user].history
+          str.push({
+            input: input,
+            option: option
+          })
+          localStorage.users = JSON.stringify(users,{[user] : {
+            history : str
+           }
+          })
+          return next(action)
+            }
+        }
         default: break;
     }
+    next(action)
 }

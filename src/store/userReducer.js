@@ -4,6 +4,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     user: null,
+    input: '',
+    option: ''
   }
   
   
@@ -23,18 +25,25 @@ const initialState = {
 
       },
       signup(state,action) {
-        const {user} = action.payload
-        state.user=user
-        localStorage.isActive = user
+        const {user, isError} = action.payload
+        if(!isError){
+            state.user=user
+            localStorage.isActive = user 
+        }
       },
       signout(state) {
         state.user=null
         localStorage.isActive = ''
       },
+      setFetch(state,action) {
+          const { input, option } = action.payload
+          state.input = input
+          state.option = option
+      }
     },
   })
   
-  export const { signin, signout, signup } = postsSlice.actions
+  export const { signin, signout, signup, setFetch } = postsSlice.actions
   
   export default postsSlice.reducer
     
