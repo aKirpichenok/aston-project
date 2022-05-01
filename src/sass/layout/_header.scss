@@ -1,0 +1,29 @@
+.header {
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0;
+
+        li {
+            list-style-type: none;
+
+            .active {
+                color:rgb(40, 52, 144);
+            }
+
+            &:nth-child(5n) {
+                margin-left: 40% ;
+            } 
+        }
+    }
+    a {
+        text-decoration: none;
+        font-size: 24px;
+        color: black;
+
+    &:hover{
+        text-decoration: underline;
+    }
+    }
+}
