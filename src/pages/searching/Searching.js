@@ -1,13 +1,18 @@
-import { useFetchCardsQuery } from "../../store/userAPI"
+import { useSelector } from "react-redux"
+import { SearchForm } from "../../components/SearchForm"
+import { Output } from "./output"
 
 const Searching = () => {
+    
+    const { option } = useSelector(state => state.user)
 
 
-    const {data:cards, isFetching, isError} = useFetchCardsQuery('deaths')
+   
     return <div>
-        {isFetching && <h1>Loading...</h1>}
-        {isError && <h1>Error while loading cards</h1>}
-        {cards && console.log('cards',cards)}
+
+        <SearchForm />
+        <Output option={option}/>
+        
     </div>
 }
 

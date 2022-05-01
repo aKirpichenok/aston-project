@@ -41,7 +41,7 @@ const initialState = {
     },
   })
   
-  export const { signin, signout, signup } = postsSlice.actions
+  export const { signin, signout, signup, setFetch } = postsSlice.actions
   
   export default postsSlice.reducer
     

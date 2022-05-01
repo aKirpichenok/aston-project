@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { setFetch } from '../store/userReducer'
 // import { change, fetchPosts } from '../reducers/reposReducers'
 
 
@@ -49,15 +50,16 @@ const SearchForm = () => {
            }
           })
         }
-        // dispatch(change({input: form.input,option:form.option}))
-        // dispatch(fetchPosts({option:form.option,input: form.input}))
+        dispatch(setFetch({input: form.input, option: form.option}))
         if(location.pathname !== "/searching") navigate("/searching")
       }else{
-        // dispatch(change({input: form.input,option: form.option}))
-        // dispatch(fetchPosts({option: form.option,input: form.input}))
+        dispatch(setFetch({input: form.input, option: form.option}))
         if(location.pathname !== "/searching") navigate("/searching")
       }
-
+      setForm({
+        input: '',
+        option: ''
+      })
       }
 
     

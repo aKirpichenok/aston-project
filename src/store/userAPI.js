@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { filterCharacters, filterDeaths, filterEpisodes, filterQuotes } from '../helpers/filters'
 
 
 export const userAPI = createApi({
@@ -6,14 +7,14 @@ export const userAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://breakingbadapi.com/api/' }),
     endpoints: (builder) => ({
         fetchCards: builder.query( {
-            query: (limit) => `${limit}`,
-            // transformResponse: (data) => {
-            //     // console.log("DATA",data)
-                
-            //     return {
-            //         data
-            //     }
-            // }
+            query: ({option}) => `${option}`,
+            transformResponse: (data,_,arg) => {
+                const { option, input } = arg
+                if(option === 'characters') return filterCharacters(data,input)
+                if(option === 'deaths') return filterDeaths(data,input)
+                if(option === 'quotes') return filterQuotes(data,input)
+                if(option === 'episodes') return filterEpisodes(data,input)
+            }
         } )
     })
 })
