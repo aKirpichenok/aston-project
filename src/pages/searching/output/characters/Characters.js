@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux"
 import { addFavouriteCharacter } from "../../../../store/favouriteReducer"
 
-export const Characters = ({ cards }) => {
+import PropTypes from 'prop-types'
+
+ function Characters ({ cards }) {
 
     const dispatch = useDispatch()
 
@@ -25,3 +27,9 @@ export const Characters = ({ cards }) => {
     }
 </div>
 }
+
+Characters.propTypes = {
+    cards: PropTypes.array
+}
+
+export { Characters }
