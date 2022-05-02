@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import useValidate from "../hooks/useValidate"
 import { signin, signup } from "../store/userReducer"
+import PropTypes from 'prop-types'
 
 
 
@@ -35,18 +36,32 @@ const FormSign = ({ type, fromPage }) => {
 
     return <>
     <h1>{type} Page</h1>
-     <form onSubmit={handleSubmit}>
-                <label>
-                    Name: <input name="username" />
-                </label>
-                <label>
-                    Password: <input name="password" />
-                </label>
+     <form onSubmit={handleSubmit} noValidate>
+                <label htmlFor='email'>Name:</label>
+                     <input 
+                     type='email' 
+                     id='email' 
+                     name='username' 
+                     required
+                     />
+                {!valid.isUserValid && <p className="invalid">username is invalid</p>}
+                <label htmlFor='password'>Password:</label>
+                     <input 
+                     type='password' 
+                     id='password' 
+                     name='password' 
+                     required
+                     />
                 <button type="submit">Login</button>
             </form>
-            {!valid.isUserValid && <p>username is invalid</p>}
-            {!valid.isPasswordValid && <p>password is invalid</p>}
+            
+            {!valid.isPasswordValid && <p className="invalid">password is invalid</p>}
             </>
+}
+
+FormSign.propTypes = {
+    type: PropTypes.oneOf(['Login','registration']),
+    fromPage: PropTypes.string
 }
 
 export { FormSign }

@@ -13,7 +13,6 @@ export const Output = () => {
 
 
     const show = () => {
-        console.log("output",option)
         switch(option) {
             case 'characters' : 
             return <Characters cards={cards} />;

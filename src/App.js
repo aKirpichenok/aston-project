@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import { ErrorBoundary } from "./components/ErrorBoundary"
 
 import { Layout } from "./components/Layout"
 import { Home, History, Searching, Favourites, SignIn, SignUp, NotFound } from "./pages"
@@ -8,6 +9,7 @@ import { RequireAuth } from "./store/requireAuth"
 
 const App = () => {
   return ( 
+    <ErrorBoundary>
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
@@ -27,6 +29,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
+    </ErrorBoundary>
   )
 }
 
