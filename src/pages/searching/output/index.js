@@ -9,6 +9,7 @@ export const Output = () => {
     const { option,input } = useSelector(state => state.user)
     const {data: cards, isFetching, isError} = useFetchCardsQuery({option,input})
     
+    
 
 
     const show = () => {
@@ -22,17 +23,16 @@ export const Output = () => {
             return <Quotes cards={cards} />;
             case 'deaths' :
             return <Deaths cards={cards} /> ;
-            default :
-            return <h1>enter text and select option</h1>
+            default: break;
         }
-        
     }
 
 
 return <>
     {
+        !option ? <h1>enter text and select option</h1> :
         isFetching ? <div>Loading...</div> :
-        isError ? <div>Error</div> :
+        isError ? <h1>Error</h1> :
         cards ? show() :
         null
     }

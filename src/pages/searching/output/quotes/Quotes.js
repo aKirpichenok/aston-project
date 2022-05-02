@@ -1,4 +1,8 @@
+import { useDispatch } from "react-redux"
+import { addFavouriteQUote } from "../../../../store/favouriteReducer"
+
 export const Quotes = ({ cards }) => {
+    const dispatch = useDispatch()
 
     return <div className="quotes">
     {cards.length > 0 ?
@@ -8,7 +12,7 @@ export const Quotes = ({ cards }) => {
             <h2>Автор: {item.author}</h2>
             <p>Series: {item.series}</p>
             <div className="like">
-                    <button>like</button>
+                    <button onClick={() => dispatch(addFavouriteQUote({ option: 'quotes', item }))}>like</button>
                 </div>
         </div>
     })

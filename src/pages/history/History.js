@@ -11,9 +11,9 @@ const History = () => {
 
     useEffect(() => {
         const users = JSON.parse(localStorage.users)
-        const history = users[user].history
+        const history = users[user]['history']
         setHistory(history)
-    },[user])
+    },[])
 
     const clear = () => {
         const users = JSON.parse(localStorage.users)

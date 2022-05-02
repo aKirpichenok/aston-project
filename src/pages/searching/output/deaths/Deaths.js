@@ -1,5 +1,10 @@
+import { useDispatch } from "react-redux"
+import { addFavouriteDeath } from "../../../../store/favouriteReducer"
 
 export const Deaths = ({ cards }) => {
+
+    const dispatch = useDispatch()
+
     return <div className="deaths">
     {cards.length > 0 ?
     cards.map(item => {
@@ -10,7 +15,7 @@ export const Deaths = ({ cards }) => {
             <p>Последние слова: {item.last_words}</p>
             <p>Эпизод: {item.episode}</p>
             <div className="like">
-                     <button>like</button>
+                     <button onClick={() => dispatch(addFavouriteDeath({ option: 'deaths', item }))}>like</button>
                  </div>
         </div>
     })
