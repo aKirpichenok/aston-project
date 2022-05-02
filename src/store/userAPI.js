@@ -3,7 +3,6 @@ import { filterCharacters, filterDeaths, filterEpisodes, filterQuotes } from '..
 
 
 export const userAPI = createApi({
-    // reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://breakingbadapi.com/api/' }),
     endpoints: (builder) => ({
         fetchCards: builder.query( {

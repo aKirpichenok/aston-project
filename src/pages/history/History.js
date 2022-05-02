@@ -14,14 +14,14 @@ const History = () => {
         const history = users[user]['history']
         setHistory(history)
     },[])
-
+    console.log(history)
     const clear = () => {
         const users = JSON.parse(localStorage.users)
         const history = users[user].history
         history.splice(0)
         setHistory()
         localStorage.users = JSON.stringify(users,{[user] : {
-            history: history
+            history
         }})
         
     }
@@ -29,8 +29,6 @@ const History = () => {
     const forward = (input,option) => {
         console.log(input,option)
         dispatch(setFetch({input,option,from:'history'}))
-    //     dispatch(change({input,option}))
-    //     dispatch(fetchPosts({option,input}))
       navigate('/searching') 
     }
 
@@ -48,7 +46,7 @@ const History = () => {
                     <button onClick={() =>forward(item.input,item.option)}>go to this</button>
                 </h3>
             })}
-            <button onClick={clear}>CLear history</button>
+            {history?.length > 0 &&  <button onClick={clear}>CLear history</button>}
         </div>
     )
 }
