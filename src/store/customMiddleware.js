@@ -5,7 +5,7 @@ export const customMiddleware = store => next => action => {
             const {user,password}=action.payload
             if(localStorage.users){
                 const users = JSON.parse(localStorage.users)
-                if(users[user] && password == users[user].password){
+                if(users[user] && password === users[user].password){
                     return next(action)
             }else {
                 let result = next({
@@ -84,13 +84,12 @@ export const customMiddleware = store => next => action => {
                 })
                 }
             }
-            break;
         }
         case 'user/signout': {
         return next(action)
         }
         case 'setFetch': {
-            if(localStorage.isActive === ''){
+            if(localStorage.isActive === '' || action.payload.from === 'history'){
                 return next(action)
             }else {
                 const { input, option } = action.payload
