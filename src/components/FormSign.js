@@ -23,7 +23,7 @@ const FormSign = ({ type, fromPage }) => {
         const user = form.username.value
         const password = form.password.value
         if(validation(user,'login') && validation(password,'password')){
-        type === 'login' ? dispatch(signin({user,password})) : dispatch(signup({user,password}))
+        type === 'Login' ? dispatch(signin({user,password})) : dispatch(signup({user,password}))
         navigate(fromPage, {replace:true})
     }else{
         setValid({
