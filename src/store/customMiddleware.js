@@ -39,10 +39,7 @@ export const customMiddleware = store => next => action => {
                 const user1 = {[user] : {
                   password,
                   favourites: {
-                    characters: [],
-                    deaths: [],
-                    episodes: [],
-                    quotes: []
+                    
                   },
                   history:[]
                 }}
@@ -67,10 +64,7 @@ export const customMiddleware = store => next => action => {
                   const user1 = {[user] : {
                     password,
                     favourites: {
-                      characters: [],
-                      deaths: [],
-                      episodes: [],
-                      quotes: []
+                      
                     },
                     history: []
                   }}
@@ -107,6 +101,76 @@ export const customMiddleware = store => next => action => {
           return next(action)
             }
         }
+        case 'favourites/addFavouriteCharacter': {
+            if(localStorage.isActive !== ''){
+                
+                const user = localStorage.isActive
+                const users = JSON.parse(localStorage.users)
+                 const favourites = users[user].favourites
+                 const { item } = action.payload
+                //  let isAdded
+                //  try {
+                //     isAdded = favourites['characters'][item.char_id]
+                //  }catch(e) {
+                //      isAdded = null
+                //  }
+                 const isAdded = favourites['characters'][item.char_id] && null
+                 isAdded ? delete favourites['characters'][item.char_id] : favourites['characters'] = {[item.char_id] : item}
+                 localStorage.users = JSON.stringify(users,{[user] : {
+                    favourites : favourites
+                   }})
+                   return next(action)
+                }else alert('Maybe login?)')
+                break;
+        }
+        case 'favourites/addFavouriteDeath': {
+            if(localStorage.isActive !== ''){
+                
+                const user = localStorage.isActive
+                const users = JSON.parse(localStorage.users)
+                 const favourites = users[user].favourites
+                 const { item } = action.payload
+                 const isAdded = favourites['deaths'][item.death_id] && null
+                 isAdded ? delete favourites['deaths'][item.death_id] : favourites['deaths'] = {[item.death_id] : item}
+                 localStorage.users = JSON.stringify(users,{[user] : {
+                    favourites : favourites
+                   }})
+                   return next(action)
+                }else alert('Maybe login?)')
+        break;
+            }
+            case 'favourites/addFavouriteEpisode': {
+                if(localStorage.isActive !== ''){
+                    
+                    const user = localStorage.isActive
+                    const users = JSON.parse(localStorage.users)
+                     const favourites = users[user].favourites
+                     const { item } = action.payload
+                     const isAdded = favourites['episodes'][item.episode_id] && null
+                     isAdded ? delete favourites['episodes'][item.episode_id] : favourites['episodes'] = {[item.episode_id] : item}
+                     localStorage.users = JSON.stringify(users,{[user] : {
+                        favourites : favourites
+                       }})
+                       return next(action)
+                    }else alert('Maybe login?)')
+            break;
+                }
+                case 'favourites/addFavouriteQuote': {
+                    if(localStorage.isActive !== ''){
+                        
+                        const user = localStorage.isActive
+                        const users = JSON.parse(localStorage.users)
+                         const favourites = users[user].favourites
+                         const { item } = action.payload
+                         const isAdded = favourites['quotes'][item.quote_id] && null
+                         isAdded ? delete favourites['quotes'][item.quote_id] : favourites['quotes'] = {[item.quote_id] : item}
+                         localStorage.users = JSON.stringify(users,{[user] : {
+                            favourites : favourites
+                           }})
+                           return next(action)
+                        }else alert('Maybe login?)')
+                break
+                    }
         default: break;
     }
     next(action)

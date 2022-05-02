@@ -14,6 +14,7 @@ export const userAPI = createApi({
                 if(option === 'deaths') return filterDeaths(data,input)
                 if(option === 'quotes') return filterQuotes(data,input)
                 if(option === 'episodes') return filterEpisodes(data,input)
+                return 
             }
         } )
     })

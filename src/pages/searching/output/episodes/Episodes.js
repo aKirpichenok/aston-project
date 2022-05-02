@@ -1,4 +1,8 @@
+import { useDispatch } from "react-redux"
+import { addFavouriteEpisode } from "../../../../store/favouriteReducer"
+
 export const Episodes = ({ cards }) => {
+    const dispatch = useDispatch()
 
     return  <div className="episodes">
     {cards.length > 0 ? 
@@ -9,7 +13,7 @@ export const Episodes = ({ cards }) => {
             <p>{`Герои: ${item.characters.reduce((prev,item) => prev+item+', ','')}`}</p>
             <p>{`Дата выхода: ${item.air_date}`}</p>
             <div className="like">
-                    <button>like</button>
+                    <button onClick={() => dispatch(addFavouriteEpisode({ option: 'episodes', item }))}>like</button>
                 </div>
         </div>
     })
