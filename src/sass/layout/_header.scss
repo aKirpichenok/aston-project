@@ -1,6 +1,6 @@
 header {
     height: 50px;
-    padding: 25px;
+    padding-top: 25px;
     
     ul {
         display: flex;
@@ -14,7 +14,7 @@ header {
             list-style-type: none;
 
             .active {
-                color:rgb(40, 52, 144);
+                color:rgb(28, 34, 125);
             }
 
             &:nth-child(5n) {
@@ -32,9 +32,9 @@ header {
     }
     }
     &.white {
-        background-color: honeydew;
+        background-color: #EBECF0;
     }
     &.dark {
-        background-color:aquamarine;
+        background-color:#C0AB8E;
     }
 }

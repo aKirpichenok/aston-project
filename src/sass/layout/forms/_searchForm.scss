@@ -1,0 +1,61 @@
+.searchForm {
+    input[type="text"] {
+      width: 38%;
+      height: 36px;
+      padding-left: 10px;
+      border: 2px solid #7BA7AB;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      background: #F9F0DA;
+      color: #9E9C9C;
+    }
+    button {
+      position: sticky; 
+      right: 0px;
+      width: 100px;
+      height: 42px;
+      border: none;
+      background: #7BA7AB;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    button:before {
+      content: "";
+      font-family: FontAwesome;
+      font-size: 16px;
+      color: #F9F0DA;
+    }
+
+    input[type="radio"] {
+        height: 20px;
+    }
+
+    .radios {
+        margin-top: 10px;
+    }
+    .radios input[type=radio] {
+        display: none;
+    }
+    .radios label {
+        display: inline-block;
+        cursor: pointer;
+        padding: 0px 15px;
+        line-height: 34px;
+        border: 1px solid #999;
+        border-radius: 6px;
+        user-select: none;
+    }
+     
+    .radios input[type=radio]:checked + label {
+        background: #ffe0a6;
+    }
+     
+    .radios label:hover {
+        color: #666;
+    }
+     
+    .radios input[type=radio]:disabled + label {
+        background: #efefef;
+        color: #666;
+    }
+  }
