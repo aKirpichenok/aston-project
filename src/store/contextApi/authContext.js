@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 
 const themeContext = React.createContext({
-    theme: 'dark',
+    theme: 'white',
     changeTheme: (theme) => { }
 })
 
 export const AuthProvider = (props) => {
-    const [theme, setTheme] = useState('dark')
+    const [theme, setTheme] = useState('white')
 
     const changeTheme = theme => {
         setTheme(theme)
