@@ -94,7 +94,7 @@ export const customMiddleware = store => next => action => {
                 const { input, option } = action.payload
                 const user = localStorage.isActive
                 const users = JSON.parse(localStorage.users)
-                if (!users[user].history.length > 1) {
+                if (!(users[user].history.length > 1)) {
                     const history = []
                     history.push({
                         input,
