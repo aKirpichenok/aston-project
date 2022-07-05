@@ -13,6 +13,7 @@ const History = () => {
         const users = JSON.parse(localStorage.users)
         const history = users[user]['history']
         setHistory(history)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const clear = () => {

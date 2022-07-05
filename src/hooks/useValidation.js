@@ -19,7 +19,7 @@ const useValidation = (value, validations) => {
             }
         }
 
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
     useEffect(() => {
